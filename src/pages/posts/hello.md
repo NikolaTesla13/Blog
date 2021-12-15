@@ -5,7 +5,7 @@ setup: |
 title: Hello world!
 publishDate: 12 Sep 2021
 description: Just a Hello World Post!
-heroImage: ../social.png
+heroImage: /social.png
 alt: Hero Image
 code: |
   class FizzBuzz

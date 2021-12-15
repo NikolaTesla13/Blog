@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useWindowDimensions from "../hooks/windowDimensions";
 
 export default function BlogHeader() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -8,14 +9,21 @@ export default function BlogHeader() {
     document.documentElement.classList.remove(previousTheme);
     document.documentElement.classList.add(theme);
   };
+  const { height, width } = useWindowDimensions();
 
   return (
     <header className="wrapper">
       <div className="article">
         <h1>
-          <a href="/" style={{ fontWeight: "bold" }}>
-            <span>Stefan Asandei</span>
-          </a>
+          {width < 700 ? (
+            <a href="/" style={{ fontWeight: "bold" }}>
+              <span>Stefan</span>
+            </a>
+          ) : (
+            <a href="/" style={{ fontWeight: "bold" }}>
+              <span>Stefan Asandei</span>
+            </a>
+          )}
         </h1>
         <div className="row">
           <h1>
