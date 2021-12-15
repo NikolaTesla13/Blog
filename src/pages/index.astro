@@ -1,7 +1,7 @@
 ---
 // Component Imports
 import BaseHead from '../components/BaseHead.astro';
-import BlogHeader from '../components/BlogHeader.astro';
+import BlogHeader from '../components/BlogHeader.jsx';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
 
 interface MarkdownFrontmatter {
@@ -12,19 +12,28 @@ interface MarkdownFrontmatter {
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'Example Blog';
-let description = 'The perfect starter for your perfect blog.';
-let permalink = 'https://example.com/';
+let title = 'Asandei Stefan';
+let description = 'I write articles about programming for fun, you can check them out here!';
+let permalink = 'https://stefan-asandei.cf';
 
 // Data Fetching: List all Markdown posts in the repo.
 
 let allPosts = await Astro.fetchContent('./posts/*.md');
-allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+allPosts = allPosts.slice(0, 3).sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 <html lang="en">
+  <script>
+    let theme = 'dracula';
+    document.documentElement.classList.add(theme);
+    if(localStorage.getItem('theme')) {
+      document.documentElement.classList.remove(theme);
+      theme = localStorage.getItem('theme');
+      document.documentElement.classList.add(theme);
+    }
+  </script>
   <head>
     <BaseHead title={title} description={description} permalink={permalink} />
     <link rel="stylesheet" href={Astro.resolve('../styles/blog.css')} />
@@ -33,25 +42,20 @@ allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(
       header {
         width: 100%;
         height: 100%;
-        background-color: var(--theme-bg-offset);
+        background-color: var(--black);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       .content {
-        margin-top: 4rem;
-        margin-bottom: 8rem;
-      }
-
-      .content :global(main > * + *) {
         margin-top: 1rem;
       }
 
       .intro {
         padding-bottom: 4rem;
         margin-bottom: 2rem;
-        border-bottom: 4px solid var(--theme-divider);
+        border-bottom: 4px solid var(--nord-black);
       }
 
       .intro > * {
@@ -62,20 +66,123 @@ allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(
         font-size: 2.5rem;
         font-weight: 700;
       }
+
+      @media screen and (min-width: 600px) {
+        #ascii-text-small {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        #ascii-text-big {
+          display: none;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <BlogHeader />
+    <BlogHeader client:load/>
     <div class="wrapper">
       <main class="content">
         <section class="intro">
-          <h1 class="latest">{title}</h1>
-          <p>{description}</p>
+        <ascii id="ascii-text-small">
+ ____  _        __              
+/ ___|| |_ ___ / _| __ _ _ __  
+\___ \| __/ _ \ |_ / _` | '_ \ 
+___) | ||  __/  _| (_| | | | | 
+|____/ \__\___|_|  \__,_|_| |_|
+          </ascii>
+          <ascii id="ascii-text-big">
+ ____  _        __                  _                        _      _
+/ ___|| |_ ___ / _| __ _ _ __      / \   ___  __ _ _ __   __| | ___(_)
+\___ \| __/ _ \ |_ / _` | '_ \    / _ \ / __|/ _` | '_ \ / _` |/ _ \ |
+ ___) | ||  __/  _| (_| | | | |  / ___ \\__ \ (_| | | | | (_| |  __/ |
+|____/ \__\___|_|  \__,_|_| |_| /_/   \_\___/\__,_|_| |_|\__,_|\___|_|
+          </ascii>
+          <h1>Hello 👋</h1>
+          <p style="margin-top: 2rem;">I'm a student 🏫 from Europe. My hobby is coding 👨‍💻, I like to challange myself building projects 👾. I'm most intrested in web technologies 🌎 and desktop applications, like game 🎮 engines. I also do competitive programming 💻, where I'm pretty high scored in my country 🏆.</p>
         </section>
-        <section aria-label="Blog post list">
-          {allPosts.map(p => <BlogPostPreview post={p} />)}
+
+        <section class="intro">
+            <h1>Blog</h1>
+            <p style="margin-top: 2rem;">I write articles about programming, for fun, you can check them out <a href="/blog">here</a>!</p>
         </section>
+
+        <!-- <section class="intro"> -->
+          <!-- <h1>Projects</h1> -->
+          <!-- <p>Some of my best projects, I will finish some day hopefully</p> -->
+          <!-- <ul> -->
+              <!-- <li>C++ -->
+                  <!-- <ul><a href="/projects/game-engine">Game Engine</a></ul> -->
+                  <!-- <ul><a href="/projects/spam-engine">Spam Engine</a></ul> -->
+                  <!-- <ul><a href="/projects/multiplayer-game">Multiplayer Game</a></ul> -->
+                  <!-- <ul><a href="/projects/ethereum-protocol-implementation">Graphics Experiments</a></ul> -->
+              <!-- </li> -->
+              <!-- <li>Java -->
+                  <!-- <ul><a href="/projects/storage-service-and-image-editing-website">Personal NAS Website</a></ul> -->
+                  <!-- <ul><a href="/projects/flappy-bird-for-android">Flappy Bird for Android</a></ul> -->
+              <!-- </li> -->
+              <!-- <li>C -->
+                  <!-- <ul><a href="/projects/window-manager">Window manager</a></ul> -->
+                  <!-- <ul><a href="/projects/linux-5.14-kerne-module">Linux 5.14 Kernel Module</a></ul> -->
+                  <!-- <ul><a href="/projects/multithreading-web-server">Multithreading Web Server</a></ul> -->
+              <!-- </li> -->
+          <!-- </ul> -->
+        <!-- </section> -->
+
+        <section class="intro">
+          <h1>School Competitions</h1>
+          <p>I went to a lot of competitions in programming, math and physics. Here are my results over the years.</p>
+          <ul style="margin-top: 2rem;">
+              <li>2018: 
+                  <ul>
+                      <li><highlight>Math</highlight><p class="white">: Second prize at "Myller" <a href="http://national.is.edu.ro/almyller/myllermic/0doc/2018/rezFINmyller2018.pdf">Source</a></p></li>
+                      <li><highlight>Math</highlight><p class="white">: Honourable Mention at "Mate3" in Suceava <a href="http://www.colegiulnationaliasi.ro/index.php?option=com_content&view=article&id=909:mate-bucuresti-vatra-dornei&catid=52:evenimente&Itemid=111">Source</a> </p></li>
+                      <li><highlight>Math</highlight><p class="white">: Admitted at Center of Excelence in Mathematics 2018-2019 <a href="http://national.is.edu.ro/Evenimente/2018%202019/GrupeCex5-7.pdf">Source</a></p></li>
+                  </ul>
+              </li>
+              <li>2019:
+                  <ul>
+                      <li><highlight>Math</highlight><p class="white">: Second place at "Micii Matematicieni" in Harlau <a href="https://www.colegiulharlau.info/MM%2031032019/Rezultate%20FINALE%20Concurs%20Micii%20Matematicieni_30.03.2019.pdf">Source</a></p></li>
+                      <li><highlight>Math</highlight><p class="white">: 391st place in Romania in the Olympic's national ranking <a href="http://www.colegiulnationaliasi.ro/Evenimente/2018%202019/OJM/ONM2019-REZULTATE_DE_AFISAT-V.pdf">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: Admitted at Center of Excelence in Programming 2019-2020 <a href="https://profs.info.uaic.ro/~infogim/2019/index.html">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 4th place at Infogim 1 <a href="https://profs.info.uaic.ro/~infogim/2019/concursuri/1/6/rez_6.html">Source</a></p></li>
+                  </ul>
+              </li>
+              <li>2020:
+                  <ul>
+                      <li><highlight>Physics</highlight><p class="white">: Honourable Mention at the Olympiad <a href="https://ea617988-0a8a-4d55-81ea-d7a0326e49b7.filesusr.com/ugd/22dcc7_7d7c8424828a4793a37a7cec2c001cf1.pdf">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 105th place in Romania in the Olympic's national ranking <a href="http://olimpiada.info/oji2020/index.php?cid=rezultate&w=gim&judet=&clasa=6">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: Attented at "Urmasii lui Moisil" <a href="http://www.liis.ro/Documents/download/Rezultate_urmasi_mici_2020.zip">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 12th place at Infogim 2 <a href="https://profs.info.uaic.ro/~infogim/2019/concursuri/2/6/rez_6.html">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 12th place at the finals of "Infogim" (second image, right) <a href="https://profs.info.uaic.ro/~infogim/2020/index.html">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: Admitted at Center of Excelence in Programming (scroll down) 2020-2021 <a href="https://profs.info.uaic.ro/~infogim/2020/index.html">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 27th place at Infogim 1 <a href="https://profs.info.uaic.ro/~infogim/2020/concursuri/1/78/rez78.html">Source</a></p></li>
+                  </ul> 
+              </li>
+              <li>2021:
+                  <ul>
+                      <li><highlight>Physics</highlight><p class="white">: 163rd place in Romania in the Olympic's national ranking, my identificator is 23041 <a href="https://www.scribd.com/document/507343177/rezultate-judet#download&from_embed">Source</a></p></li>
+                      <li><highlight>Programming</highlight><p class="white">: 86th place in Romania in the Olympic's national ranking, my identificator is IS_7_861 (Etapa națională, Clasament național, baraj juniori) <a href="http://srsi.ro/rezultate">Source</a></p> </li>
+                  </ul>
+              </li>
+          </ul>
+        </section>
+
+        <section class="intro">
+          <h1>Contact</h1>
+          <p>Here are some free services you can use to contact me.</p>
+          <ul style="margin-top: 1rem;">
+              <li>(Recommended) Email: <a style="display: inline;" href="mailto:asandei.stefanel@gmail.com">asandei.stefanel@gmail.com</a></li>
+              <li>Discord: nikolatesla13#9474</li>
+              <li>RSS Feed: Coming Soon!</li>
+          </ul>
+        </section>
+
+        <footer>
+          <p>Copyright 2021 Asandei Stefan Alexandru. All rights reserved.</p>
+        </footer>
       </main>
     </div>
   </body>
