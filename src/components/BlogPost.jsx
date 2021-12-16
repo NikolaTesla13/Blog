@@ -26,7 +26,7 @@ export default function BlogPost({
             <p className="publish-date">{publishDate}</p>
             <h1 className="title">{title}</h1>
           </div>
-          <main>{children}</main>
+          <main class="main">{children}</main>
         </div>
       </article>
     </div>
