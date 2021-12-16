@@ -37,14 +37,6 @@ code: |
   }
 ---
 
-  <style>
-    main h1 {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      border-bottom: 4px solid var(--nord-black);
-    }
-  </style>
-
 Recently, near the end of 2021, Web3 has been trending, more and more people talk about it. It introduces a new way of building applications, and because of this, there are a lot of misconceptions. In this article, I'll talk about its technical details, how it works, and of course, about its central technology: Ethereum. We'll start with a high overview and then go lower and lower.
 
 # Web3
@@ -57,7 +49,7 @@ So basically, the frontend can be the same but the backend now runs on a decentr
 
 Ethereum represents the network of the Ethereum Block Chain. It's running from the Ethereum Virtual Machine, a single, canonical computer, represented by the computing power of the miners. Why is Ethereum special? Why isn't Bitcoin, or Dogecoin, the main currency of the Web3? It's because Ethereum isn't only just a cryptocurrency, it has support for smart contracts, which can be run decentralized on the Block Chain. Since those are Turing complete, you can build almost any product using Solidity, the programming language for smart contracts, deploy it to the Block Chain, and have your code running on the EVM! This allowed the creation of many things, like NFTs (Non-fungible tokens), which are just digital proof of ownership powered by smart contracts on the Block Chain. Here is an example of how a smart contract for an NFT might look like:
 
-<Code code={frontmatter.code} lang="ts" />
+<Code code={frontmatter.code} lang="ts" theme="github-dark-dimmed"/>
 
 This is not a Solidity tutorial, but as a big overview, the code above:
 
