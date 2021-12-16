@@ -547,8 +547,10 @@ h1 a {
   margin-bottom: 0.4rem;
 }
 
-body {
-  width: 100vw;
-  position: absolute;
-  word-break: break-word;
+@media (max-width: 500px) {
+  body {
+    width: 100vw;
+    position: absolute;
+    word-break: break-word;
+  }
 }
