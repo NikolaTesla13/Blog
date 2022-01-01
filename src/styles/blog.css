@@ -473,12 +473,13 @@ h1 a {
 }
 
 .hero-image {
-  width: 100vw;
-  object-fit: scale-down;
-  object-position: center;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/9;
   margin-top: 2rem;
   margin-bottom: 4rem;
   max-width: 1280px;
+  border-radius: 1rem;
 }
 
 @media (max-width: 50em) {
@@ -553,4 +554,16 @@ h1 a {
     position: absolute;
     word-break: break-word;
   }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(87, 87, 87, 0.48);
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(23, 25, 35);
 }
