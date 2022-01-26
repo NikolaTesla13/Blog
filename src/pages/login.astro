@@ -1,0 +1,145 @@
+---
+// Component Imports
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.jsx';
+import RegisterForm from '../components/RegisterForm.jsx';
+
+interface MarkdownFrontmatter {
+  publishDate: number;
+}
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Asandei Stefan';
+let description = 'I write articles about programming for fun, you can check them out here!';
+let permalink = 'https://stefan-asandei.cf';
+
+// Data Fetching: List all Markdown posts in the repo.
+
+let allPosts = await Astro.fetchContent('./posts/*.md');
+allPosts = allPosts.slice(0, 3).sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+<html lang="en">
+  <script>
+    let theme = 'dracula';
+    document.documentElement.classList.add(theme);
+    if(localStorage.getItem('theme')) {
+      document.documentElement.classList.remove(theme);
+      theme = localStorage.getItem('theme');
+      document.documentElement.classList.add(theme);
+    }
+  </script>
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} />
+    <link rel="stylesheet" href={Astro.resolve('../styles/blog.css')} />
+
+    <style>
+      header {
+        width: 100%;
+        height: 100%;
+        background-color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        margin-top: 1rem;
+      }
+
+      .intro {
+        padding-bottom: 4rem;
+        margin-bottom: 2rem;
+        border-bottom: 4px solid var(--nord-black);
+      }
+
+      .intro > * {
+        margin: 0;
+      }
+
+      .latest {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      @media screen and (min-width: 600px) {
+        #ascii-text-small {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        #ascii-text-big {
+          display: none;
+        }
+      }
+
+     .discord-btn {
+         font-size: 1.3rem;
+         background: #5663F7;
+         border: 4px solid #5663F7;
+         margin: 0.5rem;
+     }
+
+     .discord-btn:hover {
+         background: #444fc9;
+         border: 4px solid #444fc9;
+     }
+
+    .github-btn {
+         font-size: 1.3rem;
+         margin: 0.5rem;
+     }
+    </style>
+  </head>
+
+  <body>
+    <BlogHeader client:load/>
+    <div class="wrapper">
+      <main class="content">
+      
+       <section class="intro">
+          <RegisterForm client:load/>
+        </section>
+
+        <section class="intro">
+          <table>
+            <tr>
+              <th><h3>Login</h3></th>
+              <th></th>
+            </tr>
+            <tr>
+              <td><label for="email">Email</label></td>
+              <td><input type="email" name="email" /></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password</label></td>
+              <td><input type="password" name="password" /></td>
+            </tr>
+          </table>
+          <input type="submit" value="Login" style="font-size: 1rem; margin-top: 1rem;"/>
+          
+          <br/><br/>
+
+          <button class="discord-btn">
+            Log in with Discord
+          </button>
+            <button class="github-btn">
+            Log in with GitHub
+          </button> 
+        </section>
+
+
+      </main>
+
+      <footer>
+          <p>Copyright 2021 Asandei Stefan Alexandru. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

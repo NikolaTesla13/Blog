@@ -26,7 +26,9 @@ allPosts = allPosts.slice(0, 3).sort((a, b) => new Date(b.publishDate).valueOf()
 ---
 <html lang="en">
   <script>
-    let theme = 'dracula';
+    let themes = ["dracula", "gruvbox", "nord", "solarized", "blackpink"];
+    // let theme = themes[(Math.random() * themes.length) | 0];
+    let theme = themes[0];
     document.documentElement.classList.add(theme);
     if(localStorage.getItem('theme')) {
       document.documentElement.classList.remove(theme);

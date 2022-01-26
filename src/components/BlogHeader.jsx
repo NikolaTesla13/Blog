@@ -44,9 +44,18 @@ export default function BlogHeader() {
             style={{ display: `${menuOpened ? "" : "none"}` }}
           >
             <button onClick={() => changeTheme("dracula")}>dracula</button>
+            <button onClick={() => changeTheme("gruvbox")}>gruvbox</button>
             <button onClick={() => changeTheme("nord")}>nord</button>
             <button onClick={() => changeTheme("solarized")}>solarized</button>
+            <button onClick={() => changeTheme("blackpink")}>blackpink</button>
           </div>
+          {/* {width > 700 ? (
+            <button onClick={() => (window.location = "/login")}>
+              <h1 suppressHydrationWarning>Log in</h1>
+            </button>
+          ) : (
+            <></>
+          )} */}
           {/* <!-- <h1>
               <a href="/projects" class="not-selected">
                 <span>Projects</span>

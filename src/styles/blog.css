@@ -45,6 +45,16 @@
   --solarized-dark-blue: #2aa198;
   --solarized-green: #859900;
   --solarized-yellow: #b58900;
+
+  --blackpink-black: #141414;
+  --blackpink-white: #fafafa;
+  --blackpink-orange: #ff99cc;
+  --blackpink-red: #6163d0;
+  --blackpink-pink: #f77fbe;
+  --blackpink-blue: #bb7aff;
+  --blackpink-dark-blue: #ff99cc;
+  --blackpink-green: #bb7aff;
+  --blackpink-yellow: #f77fbe;
 }
 
 .gruvbox {
@@ -93,6 +103,18 @@
   --dark-blue: var(--solarized-dark-blue);
   --green: var(--solarized-green);
   --yellow: var(--solarized-yellow);
+}
+
+.blackpink {
+  --black: var(--blackpink-black);
+  --white: var(--blackpink-white);
+  --orange: var(--blackpink-orange);
+  --red: var(--blackpink-red);
+  --pink: var(--blackpink-pink);
+  --blue: var(--blackpink-blue);
+  --dark-blue: var(--blackpink-dark-blue);
+  --green: var(--blackpink-green);
+  --yellow: var(--blackpink-yellow);
 }
 
 body {
@@ -375,7 +397,7 @@ highlight {
   color: var(--yellow);
 }
 
-input[type="text"],
+input,
 button {
   font-family: "Fira Code";
   color: var(--white);

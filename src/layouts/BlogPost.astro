@@ -26,16 +26,21 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
   </head>
   <body>
     <BlogHeader client:load/>
-    <div class="wrapper">
-      <BlogPost
-        title={title}
-        author={author}
-        heroImage={heroImage}
-        publishDate={publishDate}
-        alt={alt}
-      >
-        <slot />
-      </BlogPost>
-    </div>
+    <main>
+      <div class="wrapper">
+        <BlogPost
+          title={title}
+          author={author}
+          heroImage={heroImage}
+          publishDate={publishDate}
+          alt={alt}
+        >
+          <slot />
+        </BlogPost>
+      </div>
+      <!-- <footer>
+        <p>Copyright 2021 Asandei Stefan Alexandru. All rights reserved.</p>
+      </footer> -->
+    </main>
   </body>
 </html>
