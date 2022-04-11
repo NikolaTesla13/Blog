@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins&display=swap");
 
 :root {
   --font-fallback: sans-serif;
@@ -178,6 +178,7 @@ img {
   border-radius: 1rem;
 }
 
+/* Typography */
 :is(h1, h2, h3, h4, h5, h6) {
   margin-bottom: 1.38rem;
   font-weight: 400;
@@ -263,6 +264,8 @@ strong {
   font-weight: 600;
   color: inherit;
 }
+
+/* Supporting Content */
 
 code:not([class*="language"]) {
   --border-radius: 3px;
@@ -417,6 +420,11 @@ button:active {
 header {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  /* position: sticky;
+  top: 0;
+  background: rgba(var(--theme-bg), 0.2);
+  backdrop-filter: blur(10px);
+  background-blend-mode: darken; */
 }
 .article {
   display: flex;
@@ -580,4 +588,4 @@ h1 a {
 
 ::-webkit-scrollbar-track {
   background: rgb(23, 25, 35);
-} */
+}
