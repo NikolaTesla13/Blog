@@ -7,34 +7,6 @@ publishDate: 16 Dec 2021
 description: Technical details about the upcoming Web3 and its changes.
 heroImage: /web3-banner.png
 alt: Hero Image
-code: |
-  // SPDX-License-Identifier: MIT
-  pragma solidity ^0.8.0;
-
-  import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-  import "@openzeppelin/contracts/utils/Counters.sol";
-  import "@openzeppelin/contracts/access/Ownable.sol";
-  import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-
-  contract MyNFT is ERC721URIStorage, Ownable {
-      using Counters for Counters.Counter;
-      Counters.Counter private _tokenIds;
-
-      constructor() public ERC721("MyNFT", "NFT") {}
-
-      function mintNFT(address recipient, string memory tokenURI)
-          public onlyOwner
-          returns (uint256)
-      {
-          _tokenIds.increment();
-
-          uint256 newItemId = _tokenIds.current();
-          _mint(recipient, newItemId);
-          _setTokenURI(newItemId, tokenURI);
-
-          return newItemId;
-      }
-  }
 ---
 
 Recently, near the end of 2021, Web3 has been trending, more and more people talk about it. It introduces a new way of building applications, and because of this, there are a lot of misconceptions. In this article, I'll talk about its technical details, how it works, and of course, about its central technology: Ethereum. We'll start with a high overview and then go lower and lower.
@@ -49,7 +21,33 @@ So basically, the frontend can be the same but the backend now runs on a decentr
 
 Ethereum represents the network of the Ethereum Block Chain. It's running from the Ethereum Virtual Machine, a single, canonical computer, represented by the computing power of the miners. Why is Ethereum special? Why isn't Bitcoin, or Dogecoin the main currency of the Web3? It's because Ethereum isn't only just a cryptocurrency, it has support for smart contracts, which can be run decentralized on the Block Chain. Since those are Turing complete, you can build almost any product using Solidity, the programming language for smart contracts, deploy it to the Block Chain, and have your code running on the EVM! This allowed the creation of many things, like NFTs (Non-fungible tokens), which are just digital proof of ownership powered by smart contracts on the Block Chain. Here is an example of how a smart contract for an NFT might look like:
 
-<Code code={frontmatter.code} lang="ts" theme="github-dark-dimmed"/>
+```ts
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+
+contract MyNFT is ERC721URIStorage, Ownable {
+  using Counters for Counters.Counter;
+  Counters.Counter private \_tokenIds;
+
+    constructor() public ERC721("MyNFT", "NFT") {}
+
+    function mintNFT(address recipient, string memory tokenURI)
+        public onlyOwner
+        returns (uint256)
+    {
+        _tokenIds.increment();
+        uint256 newItemId = _tokenIds.current();
+        _mint(recipient, newItemId);
+        _setTokenURI(newItemId, tokenURI);
+        return newItemId;
+    }
+}
+```
 
 This is not a Solidity tutorial, but as a big overview, the code above:
 
@@ -98,3 +96,7 @@ I hope this article cleared out some details about the upcoming Web3!
 - Ethereum Developer Documentation: https://ethereum.org/en/developers/docs/
 - Wikipedia page for Ethereum: https://en.wikipedia.org/wiki/Ethereum
 - "Is Web3 all Hype?", from Fireship https://youtu.be/wHTcrmhskto
+
+```
+
+```

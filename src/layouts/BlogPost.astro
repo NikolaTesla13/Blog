@@ -2,13 +2,16 @@
 import BaseHead from "../components/BaseHead.astro";
 import BlogHeader from "../components/BlogHeader.jsx";
 import BlogPost from "../components/BlogPost.jsx"
+import { Markdown } from 'astro/components';
+import MarkdownFix from "../components/MarkdownFix.astro";
 
 const { content } = Astro.props;
 const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+const source = content.astro.source;
 ---
 <html lang={content.lang || "en"}>
   <script hoist>
-  let theme = "dracula";
+    let theme = "dracula";
     document.documentElement.classList.add(theme);
     if (localStorage.getItem("theme")) {
       document.documentElement.classList.remove(theme);
@@ -23,6 +26,9 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
       permalink={permalink}
     />
     <link rel="stylesheet" href={Astro.resolve("../styles/blog.css")} />
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/nord.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
   </head>
   <body>
     <BlogHeader client:load/>
@@ -35,12 +41,14 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
           publishDate={publishDate}
           alt={alt}
         >
-          <slot />
+            <MarkdownFix content={source} />
         </BlogPost>
       </div>
       <!-- <footer>
         <p>Copyright 2021 Asandei Stefan Alexandru. All rights reserved.</p>
       </footer> -->
     </main>
+
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

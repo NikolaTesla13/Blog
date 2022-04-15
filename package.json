@@ -20,6 +20,8 @@
     "aws-sdk": "^2.1048.0",
     "bcrypt": "^5.0.1",
     "faunadb": "^4.4.1",
+    "highlight.js": "^11.5.1",
+    "markdown-it": "^12.3.2",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.2.1"
   }
