@@ -96,7 +96,3 @@ I hope this article cleared out some details about the upcoming Web3!
 - Ethereum Developer Documentation: https://ethereum.org/en/developers/docs/
 - Wikipedia page for Ethereum: https://en.wikipedia.org/wiki/Ethereum
 - "Is Web3 all Hype?", from Fireship https://youtu.be/wHTcrmhskto
-
-```
-
-```
