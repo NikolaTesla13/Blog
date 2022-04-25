@@ -1,1 +1,86 @@
-    <a href="https://mihairadu.cf/">https://mihairadu.cf/</a>
+---
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.jsx';
+
+---
+<html lang="en">
+  <script>
+    let themes = ["dracula", "gruvbox", "nord", "solarized", "blackpink"];
+    let theme = themes[0];
+    document.documentElement.classList.add(theme);
+    if(localStorage.getItem('theme')) {
+      document.documentElement.classList.remove(theme);
+      theme = localStorage.getItem('theme');
+      document.documentElement.classList.add(theme);
+    }
+
+    window.addEventListener('load', () => {
+        let websites = ["https://mihairadu.cf/", "https://lukesmith.xyz/", "https://saschawillems.de/", "https://alain.xyz/"];
+        document.querySelector("ul").innerHTML = websites.map(website => {
+            return `<li><a href="${website}">${website}</a></li>`;
+        }).join("");
+    });
+  </script>
+  <head>
+    <BaseHead title="Webring" description="Webring" permalink="/webring" />
+    <link rel="stylesheet" href={Astro.resolve('../styles/blog.css')} />
+
+    <style>
+      header {
+        width: 100%;
+        height: 100%;
+        background-color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      footer {
+        border-top: 4px solid var(--nord-black);
+        width: 50%;
+        padding-top: 1.5rem;
+          position: fixed;
+          bottom: 0;
+      }
+
+    h1 {
+        padding-bottom: 2rem;
+    }
+
+    a {
+        font-size: 3rem;
+    }
+
+      .content {
+        margin-top: 1rem;
+      }
+
+      .intro {
+        padding-bottom: 4rem;
+        margin-bottom: 2rem;
+      }
+
+      .intro > * {
+        margin: 0;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <BlogHeader client:load/>
+    <div class="wrapper">
+      <main class="content">
+        <section class="intro">
+            <h1>This is my webring, a list of websites I like, based on my various interests.</h1>
+            <ul>
+            </ul>
+        </section>
+
+        <footer>
+          <p>Copyright 2021 Asandei Stefan Alexandru. All rights reserved.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

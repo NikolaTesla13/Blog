@@ -289,6 +289,16 @@ pre > code:not([class*="language"]) {
   color: inherit;
 }
 
+h1 > a {
+  margin-right: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .webring {
+    display: none;
+  }
+}
+
 pre {
   position: relative;
   background-color: var(--theme-code-bg);

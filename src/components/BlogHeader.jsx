@@ -30,6 +30,9 @@ export default function BlogHeader() {
             <a href="/blog" className="not-selected">
               <span>Blog</span>
             </a>
+            <a href="/webring" className="not-selected webring">
+              <span>Webring</span>
+            </a>
           </h1>
           <button onClick={() => setMenuOpened(!menuOpened)}>
             <h1 suppressHydrationWarning>
