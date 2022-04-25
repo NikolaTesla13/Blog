@@ -36,7 +36,7 @@ export default function BlogHeader() {
           </h1>
           <button onClick={() => setMenuOpened(!menuOpened)}>
             <h1 suppressHydrationWarning>
-              theme{" "}
+              theme
               <span style={{ transform: `scaleY(${menuOpened ? -1 : 1})` }}>
                 ▼
               </span>

@@ -288,14 +288,36 @@ pre > code:not([class*="language"]) {
   border-radius: 0;
   color: inherit;
 }
-
-h1 > a {
-  margin-right: 1.5rem;
-}
-
 @media only screen and (max-width: 600px) {
   .webring {
     display: none;
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    overflow: auto;
+    z-index: 1;
+    margin-top: 2.4rem;
+    margin-left: 5.6rem;
+    display: flex;
+    flex-direction: column;
+    width: 7.3rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  h1 > a {
+    margin-right: 1.5rem;
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    overflow: auto;
+    z-index: 1;
+    margin-top: 2.4rem;
+    margin-left: 14.9rem;
+    display: flex;
+    flex-direction: column;
+    width: 7.3rem;
   }
 }
 
@@ -486,17 +508,6 @@ svg {
 h1 a {
   text-decoration: none;
   display: inline-flex;
-}
-
-.dropdownMenu {
-  position: absolute;
-  overflow: auto;
-  z-index: 1;
-  margin-top: 2.4rem;
-  margin-left: 5.6rem;
-  display: flex;
-  flex-direction: column;
-  width: 7.3rem;
 }
 
 .dropdownMenu button {
