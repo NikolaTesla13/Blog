@@ -42,8 +42,8 @@ Here are some vague ideas you can get from the movie. I will let you, the reader
 # Why did so many dislike it?
 
 “Expectations are the thief of joy”
-<br />
-<br />
+
+
 This movie was released almost 20 years after the supposed end of the trilogy, I think it's clear as daylight the original vision of the director changed through the years, and I don't think that's bad. The hardcore old fans might dislike but I think this can be a reboot, leaving the door open for future Matrix movies.
 
 # References
