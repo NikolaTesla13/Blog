@@ -31,8 +31,6 @@ For a basic ray caster, the map consists of a 2D array with either 1s (it's a wa
 ----------------- 
 ```
 
-<!-- todo: example code and finish explanation -->
-
 The use of ray casting allowed Doom to run on a wide ranges of PCs at the time, since most could only do software rendering.
 
 ## Binary Space Partitioning
@@ -77,8 +75,6 @@ float Q_rsqrt( float number )
 	return y;
 }
 ```
-
-<!-- Why is it useful to quickly calculate 1/sqrt(n) for a given value? good question cause idk -->
 
 ## Conclusion
 
